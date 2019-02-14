@@ -101,7 +101,7 @@ module "vpc_peering_accepter" {
 
 | Name | Description |
 |------|-------------|
-| id | ID of the VPC peering connection |
+| connection\_id | ID of the VPC peering connection |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
