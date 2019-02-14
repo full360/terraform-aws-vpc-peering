@@ -101,7 +101,7 @@ Requester side:
 
 ## License
 
-Apache Licensed Version 2.0. See LICENSE for full details.
+Apache License Version 2.0. See LICENSE for full details.
 
 [vpc-peering]: https://www.terraform.io/docs/providers/aws/r/vpc_peering.html
 [vpc-peering-options]: https://www.terraform.io/docs/providers/aws/r/vpc_peering_options.html
