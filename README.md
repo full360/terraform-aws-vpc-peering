@@ -1,4 +1,4 @@
-# AWS VPC peering Terraform module
+# AWS VPC peering Terraform module [![Build Status](https://travis-ci.org/full360/terraform-aws-vpc-peering.svg?branch=master)](https://travis-ci.org/full360/terraform-aws-vpc-peering)
 
 Terraform module which creates VPC peering resources on AWS.
 
