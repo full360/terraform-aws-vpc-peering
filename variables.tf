@@ -10,7 +10,8 @@ variable "tags" {
 variable "requester_tags" {
   description = "Additional tags for the requester side"
   type        = "map"
-  default     = {
+
+  default = {
     "Side" = "requester"
   }
 }
@@ -18,7 +19,8 @@ variable "requester_tags" {
 variable "accepter_tags" {
   description = "Additional tags for the accepter side"
   type        = "map"
-  default     = {
+
+  default = {
     "Side" = "accepter"
   }
 }
