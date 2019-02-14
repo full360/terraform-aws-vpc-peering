@@ -1,0 +1,24 @@
+env:
+  - TF_VERSION=0.11.11
+
+sudo: required
+
+language: bash
+
+before_install:
+- curl -fsSL https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -o /tmp/terraform.zip
+- sudo unzip -d /usr/local/bin/ /tmp/terraform.zip
+
+script:
+- terraform init
+- terraform fmt -check=true
+- terraform validate -check-variables=false
+
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+
+notifications:
+  email:
+    - r-and-d@slack.full360.com
