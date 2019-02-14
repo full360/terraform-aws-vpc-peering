@@ -22,47 +22,53 @@ not have any mandatory/required variables.
 
 Requester side:
 
-    module "vpc_peering_requester" {
-      source = "github.com/full360/terraform-aws-vpc-peering"
+```hcl
+module "vpc_peering_requester" {
+  source = "github.com/full360/terraform-aws-vpc-peering"
 
-      requester = true
+  requester = true
 
-      accepter_owner_id   = "1234567890"
-      accepter_vpc_id     = "vpc-654321"
-      accepter_region     = "us-east-1"
-      accepter_cidr_block = "172.16.0.0/24"
-      requester_vpc_id    = "vpc-123456"
+  accepter_owner_id   = "1234567890"
+  accepter_vpc_id     = "vpc-654321"
+  accepter_region     = "us-east-1"
+  accepter_cidr_block = "172.16.0.0/24"
+  requester_vpc_id    = "vpc-123456"
 
-      requester_private_route_table_ids = [
-        "rtb-987656a1e6becddb4",
-      ]
+  requester_private_route_table_ids = [
+    "rtb-987656a1e6becddb4",
+  ]
 
-      requester_public_route_table_ids = [
-        "rtb-123456a1e6becddb3",
-      ]
+  requester_public_route_table_ids = [
+    "rtb-123456a1e6becddb3",
+  ]
 
-      tags = "${merge(map("Name", "my-peering-connection"), var.tags)}"
-    }
+  tags = "${merge(map("Name", "my-peering-connection"), var.tags)}"
+}
+```
 
-    module "vpc_peering_accepter" {
-      source = "github.com/full360/terraform-aws-vpc-peering"
+Accepter side:
 
-      accepter = true
+```hcl
+module "vpc_peering_accepter" {
+  source = "github.com/full360/terraform-aws-vpc-peering"
 
-      auto_accept               = true
-      vpc_peering_connection_id = "pcx-1234567530b90e383"
-      requester_cidr_block      = "172.32.0.0/24"
+  accepter = true
 
-      accepter_private_route_table_ids = [
-        "rtb-0987654321becddb2",
-      ]
+  auto_accept               = true
+  vpc_peering_connection_id = "pcx-1234567530b90e383"
+  requester_cidr_block      = "172.32.0.0/24"
 
-      accepter_public_route_table_ids = [
-        "rtb-1234567890becddb1",
-      ]
+  accepter_private_route_table_ids = [
+    "rtb-0987654321becddb2",
+  ]
 
-      tags = "${merge(map("Name", "my-peering-connection"), var.tags)}"
-    }
+  accepter_public_route_table_ids = [
+    "rtb-1234567890becddb1",
+  ]
+
+  tags = "${merge(map("Name", "my-peering-connection"), var.tags)}"
+}
+```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
