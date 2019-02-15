@@ -14,18 +14,10 @@ resource "aws_vpc_peering_connection" "requester" {
 }
 
 # Routes
-resource "aws_route" "requester_private_table" {
-  count = "${var.requester && length(var.requester_private_route_table_ids) > 0 ? length(var.requester_private_route_table_ids) : 0}"
+resource "aws_route" "requester_table" {
+  count = "${var.requester && length(var.requester_route_table_ids) > 0 ? length(var.requester_route_table_ids) : 0}"
 
-  route_table_id            = "${var.requester_private_route_table_ids[count.index]}"
-  destination_cidr_block    = "${var.accepter_cidr_block}"
-  vpc_peering_connection_id = "${aws_vpc_peering_connection.requester.id}"
-}
-
-resource "aws_route" "requester_public_table" {
-  count = "${var.requester && length(var.requester_public_route_table_ids) > 0 ? length(var.requester_public_route_table_ids) : 0}"
-
-  route_table_id            = "${var.requester_public_route_table_ids[count.index]}"
+  route_table_id            = "${var.requester_route_table_ids[count.index]}"
   destination_cidr_block    = "${var.accepter_cidr_block}"
   vpc_peering_connection_id = "${aws_vpc_peering_connection.requester.id}"
 }
@@ -70,18 +62,10 @@ resource "aws_vpc_peering_connection_options" "accepter" {
 }
 
 # Routes
-resource "aws_route" "accepter_private_table" {
-  count = "${var.accepter && length(var.accepter_private_route_table_ids) > 0 ? length(var.accepter_private_route_table_ids) : 0}"
+resource "aws_route" "accepter_table" {
+  count = "${var.accepter && length(var.accepter_route_table_ids) > 0 ? length(var.accepter_route_table_ids) : 0}"
 
   vpc_peering_connection_id = "${aws_vpc_peering_connection_accepter.side.id}"
-  route_table_id            = "${var.accepter_private_route_table_ids[count.index]}"
-  destination_cidr_block    = "${var.requester_cidr_block}"
-}
-
-resource "aws_route" "accepter_public_table" {
-  count = "${var.accepter && length(var.accepter_public_route_table_ids) > 0 ? length(var.accepter_public_route_table_ids) : 0}"
-
-  vpc_peering_connection_id = "${aws_vpc_peering_connection_accepter.side.id}"
-  route_table_id            = "${var.accepter_public_route_table_ids[count.index]}"
+  route_table_id            = "${var.accepter_route_table_ids[count.index]}"
   destination_cidr_block    = "${var.requester_cidr_block}"
 }

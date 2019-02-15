@@ -65,14 +65,8 @@ variable "auto_accept" {
   default     = false
 }
 
-variable "requester_private_route_table_ids" {
-  description = "List of the private route table ids from the requester side"
-  type        = "list"
-  default     = []
-}
-
-variable "requester_public_route_table_ids" {
-  description = "List of the public route table ids from the requester side"
+variable "requester_route_table_ids" {
+  description = "List of route table ids from the requester side"
   type        = "list"
   default     = []
 }
@@ -87,14 +81,8 @@ variable "vpc_peering_connection_id" {
   default     = ""
 }
 
-variable "accepter_private_route_table_ids" {
-  description = "List of the private route table ids from the accepter side"
-  type        = "list"
-  default     = []
-}
-
-variable "accepter_public_route_table_ids" {
-  description = "List of the public route table ids from the accepter side"
+variable "accepter_route_table_ids" {
+  description = "List of route table ids from the accepter side"
   type        = "list"
   default     = []
 }

@@ -78,9 +78,8 @@ module "vpc_peering_accepter" {
 | accepter | Flag to know the VPC peering side | string | `"false"` | no |
 | accepter\_cidr\_block | CIDR block of the accepter side | string | `""` | no |
 | accepter\_owner\_id | Account ID of the accepter side | string | `""` | no |
-| accepter\_private\_route\_table\_ids | List of the private route table ids from the accepter side | list | `[]` | no |
-| accepter\_public\_route\_table\_ids | List of the public route table ids from the accepter side | list | `[]` | no |
 | accepter\_region | Region of the VPC where the accepter connection is | string | `""` | no |
+| accepter\_route\_table\_ids | List of route table ids from the accepter side | list | `[]` | no |
 | accepter\_tags | Additional tags for the accepter side | map | `{ "Side": "accepter" }` | no |
 | accepter\_vpc\_id | VPC ID of the accepter side | string | `""` | no |
 | allow\_classic\_link\_to\_remote\_vpc | Allow Classic Link to remote VPC | string | `"false"` | no |
@@ -90,8 +89,7 @@ module "vpc_peering_accepter" {
 | requester | Flag to know the VPC peering side | string | `"false"` | no |
 | requester\_cidr\_block | CIDR block of the requester side | string | `""` | no |
 | requester\_options | Flag to enable the requester options | string | `"false"` | no |
-| requester\_private\_route\_table\_ids | List of the private route table ids from the requester side | list | `[]` | no |
-| requester\_public\_route\_table\_ids | List of the public route table ids from the requester side | list | `[]` | no |
+| requester\_route\_table\_ids | List of route table ids from the requester side | list | `[]` | no |
 | requester\_tags | Additional tags for the requester side | map | `{ "Side": "requester" }` | no |
 | requester\_vpc\_id | VPC ID of the requester side | string | `""` | no |
 | tags | Map of Tags of the peering connection | map | `{}` | no |
